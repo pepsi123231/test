@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - White Theme</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #007bff;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .category {
+            margin-bottom: 30px;
+        }
+
+        .category h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .item {
+            text-align: center;
+            padding: 15px;
+            background-color: #f1f1f1;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .item img {
+            width: 100%;
+            height: auto;
+            max-width: 150px;
+            margin-bottom: 10px;
+        }
+
+        .item h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .item p {
+            font-size: 14px;
+            color: #666;
+        }
+    .flame {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        width: 15px; /* Reduced size */
+        height: auto; /* Ensure proportionate height */
+        transform: rotate(-10deg);
+    }
+
+        #itemDetails {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            z-index: 2000;
+        }
+
+        #itemDetails h3 {
+            margin-top: 0;
+        }
+
+        #itemDetails button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #itemDetails button:hover {
+            background-color: #0056b3;
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .language-selector {
+            margin-top: 15px;
+        }
+
+        .language-selector select {
+            padding: 5px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Reselling Products</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Categories</a>
+            <a href="#">Contact</a>
+        </nav>
+        <div class="language-selector">
+            <label for="language">Choose Language:</label>
+            <select id="language" onchange="changeLanguage()">
+                <option value="en">English</option>
+                <option value="de">German</option>
+                <option value="fr">French</option>
+                <option value="nl">Dutch</option>
+            </select>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="category">
+            <h2 id="category-title">Beanies</h2>
+            <div class="items">
+                <div class="item" onclick="showDetails('Ralph Lauren', 'Elegant beanie made from premium wool.')">
+                    <img src="beanierl.png" alt="Ralph Lauren Beanie">
+                    <h3>Ralph Lauren</h3>
+                    <p id="price-rl">17€</p>
+                </div>
+                <div class="item" onclick="showDetails('Moncler', 'Stylish and warm, perfect for winter.')">
+                    <img src="Monclerb.png" alt="Moncler Beanie">
+                    <h3>Moncler</h3>
+                    <p id="price-mc">15€</p>
+                </div>
+                <div class="item" onclick="showDetails('Canada Goose', 'Modern design with a snug fit.')">
+                    <img src="cgb.jpg" alt="EA7 Beanie">
+                    <h3>Canada Goose</h3>
+                    <p id="price-ea7">15€</p>
+                </div>
+                <div class="item" onclick="showDetails('North Face', 'Durable and warm for outdoor adventures.')">
+                    <img src="NorthFaceb.png" alt="North Face Beanie">
+                    <h3>North Face</h3>
+                    <p id="price-nf">15€</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="category">
+            <h2 id="shoes-title">Shoes</h2>
+            <div class="items">
+                <div class="item" onclick="showDetails('Nike Shox', 'Trendy and comfortable for daily wear.')">
+                    <img src="shox.png" alt="Nike Shox">
+                    <img class="flame" src="flames.png" alt="Hot Sale">
+                    <h3>Nike Shox</h3>
+                    <p id="price-shox">42€</p>
+                </div>
+                <div class="item" onclick="showDetails('Air Force 1', 'Classic design for every occasion.')">
+                    <img src="af1.jpg" alt="Air Force 1">
+                    <h3>Air Force 1</h3>
+                    <p id="price-af1">30€</p>
+                </div>
+                <div class="item" onclick="showDetails('Nike TN', 'Sleek and sporty.')">
+                    <img src="tns.jpg" alt="Nike TN">
+                    <h3>Nike TN</h3>
+                    <p id="price-tn">40€</p>
+                </div>
+                <div class="item" onclick="showDetails('Air Max 90', 'Comfortable and stylish.')">
+                    <img src="max90.png" alt="Air Max 90">
+                    <h3>Air Max 90</h3>
+                    <p id="price-am90">40€</p>
+                </div>
+                <div class="item" onclick="showDetails('Jordan 4', 'Iconic design for collectors.')">
+                    <img src="jordan4.png" alt="Jordan 4">
+                    <h3>Jordan 4</h3>
+                    <p id="price-j4">40€</p>
+                </div>
+                <div class="item" onclick="showDetails('Uptempo', 'Bold and unique style.')">
+                    <img src="uptempo.jpg" alt="Uptempo">
+                    <h3>Uptempo</h3>
+                    <p id="price-ut">47€</p>
+                </div>
+                <div class="item" onclick="showDetails('Dunk x Supreme', 'Exclusive collaboration for enthusiasts.')">
+                    <img src="dn.png" alt="Dunk x Supreme">
+                    <h3>Dunk x Supreme</h3>
+                    <p id="price-dxs">47€</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="overlay" onclick="hideDetails()"></div>
+
+    <div id="itemDetails">
+        <h3 id="itemTitle">Item Title</h3>
+        <p id="itemDescription">Item Description</p>
+        <button onclick="hideDetails()">Close</button>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                categoryTitle: "Beanies",
+                shoesTitle: "Shoes",
+                prices: {
+                    rl: "17€",
+                    mc: "15€",
+                    ea7: "15€",
+                    nf: "15€",
+                    shox: "42€",
+                    af1: "30€",
+                    tn: "40€",
+                    am90: "40€",
+                    j4: "40€",
+                    ut: "47€",
+                    dxs: "47€",
+                },
+            },
+            de: {
+                categoryTitle: "Mützen",
+                shoesTitle: "Schuhe",
+                prices: {
+                    rl: "17€",
+                    mc: "15€",
+                    ea7: "15€",
+                    nf: "15€",
+                    shox: "42€",
+                    af1: "30€",
+                    tn: "40€",
+                    am90: "40€",
+                    j4: "40€",
+                    ut: "47€",
+                    dxs: "47€",
+                },
+            },
+            fr: {
+                categoryTitle: "Bonnets",
+                shoesTitle: "Chaussures",
+                prices: {
+                    rl: "17€",
+                    mc: "15€",
+                    ea7: "15€",
+                    nf: "15€",
+                    shox: "42€",
+                    af1: "30€",
+                    tn: "40€",
+                    am90: "40€",
+                    j4: "40€",
+                    ut: "47€",
+                    dxs: "47€",
+                },
+            },
+            nl: {
+                categoryTitle: "Mutsen",
+                shoesTitle: "Schoenen",
+                prices: {
+                    rl: "17€",
+                    mc: "15€",
+                    ea7: "15€",
+                    nf: "15€",
+                    shox: "42€",
+                    af1: "30€",
+                    tn: "40€",
+                    am90: "40€",
+                    j4: "40€",
+                    ut: "47€",
+                    dxs: "47€",
+                },
+            },
+        };
+
+        function changeLanguage() {
+            const lang = document.getElementById('language').value;
+            const { categoryTitle, shoesTitle, prices } = translations[lang];
+            document.getElementById('category-title').innerText = categoryTitle;
+            document.getElementById('shoes-title').innerText = shoesTitle;
+            document.getElementById('price-rl').innerText = prices.rl;
+            document.getElementById('price-mc').innerText = prices.mc;
+            document.getElementById('price-ea7').innerText = prices.ea7;
+            document.getElementById('price-nf').innerText = prices.nf;
+            document.getElementById('price-shox').innerText = prices.shox;
+            document.getElementById('price-af1').innerText = prices.af1;
+            document.getElementById('price-tn').innerText = prices.tn;
+            document.getElementById('price-am90').innerText = prices.am90;
+            document.getElementById('price-j4').innerText = prices.j4;
+            document.getElementById('price-ut').innerText = prices.ut;
+            document.getElementById('price-dxs').innerText = prices.dxs;
+        }
+
+        function showDetails(title, description) {
+            document.getElementById('itemTitle').innerText = title;
+            document.getElementById('itemDescription').innerText = description;
+            document.getElementById('itemDetails').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function hideDetails() {
+            document.getElementById('itemDetails').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
