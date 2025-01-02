@@ -175,19 +175,26 @@
             padding: 5px;
             font-size: 14px;
         }
+
+        .note {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 18px;
+            color: #333;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Reselling Products</h1>
-        <h3>Note: The beanies are inclusive shipping! 1 beanie costs 12$</h3>
+        <h1 id="header-title">Reselling Products</h1>
+        <h3 id="header-note">Note: The beanies are inclusive shipping! 1 beanie costs 12$</h3>
         <nav>
             <a href="#">Home</a>
             <a href="#">Categories</a>
             <a href="#">Contact</a>
         </nav>
         <div class="language-selector">
-            <label for="language">Choose Language:</label>
+            <label for="language" id="language-label">Choose Language:</label>
             <select id="language" onchange="changeLanguage()">
                 <option value="en">English</option>
                 <option value="de">German</option>
@@ -200,7 +207,7 @@
     <div class="container">
         <!-- Beanie Section -->
         <section class="category">
-            <h2>Beanies</h2>
+            <h2 id="beanie-title">Beanies</h2>
             <div class="items">
                 <div class="item" onclick="showDetails('Ralph Lauren', 'Elegant beanie made from premium wool.')">
                     <div class="stock-status">In Stock</div>
@@ -231,7 +238,7 @@
 
         <!-- Shoes Section -->
         <section class="category">
-            <h2>Shoes</h2>
+            <h2 id="shoes-title">Shoes</h2>
             <div class="items">
                 <div class="item" onclick="showDetails('Nike Shox', 'Trendy and comfortable for daily wear.')">
                     <div class="stock-status">In Stock</div>
@@ -281,7 +288,7 @@
 
         <!-- Hoodie Section -->
         <section class="category">
-            <h2>Hoodies</h2>
+            <h2 id="hoodie-title">Hoodies</h2>
             <div class="items">
                 <div class="item" onclick="showDetails('Sp5der Hoodie', 'Stylish Sp5der hoodie with premium quality fabric.')">
                     <div class="stock-status">In Stock</div>
@@ -307,30 +314,116 @@
                     <h3>Kenzo Paris Hoodie</h3>
                     <p id="price-kzh">25€</p>
                 </div>
+                <div class="item" onclick="showDetails('Ralph Lauren Cable Knit Sweater', 'Classic Ralph Lauren sweater, cozy and stylish.')">
+                    <div class="stock-status">In Stock</div>
+                    <img src="rls.png" alt="Ralph Lauren Cable Knit Sweater">
+                    <h3>Ralph Lauren Cable Knit Sweater</h3>
+                    <p id="price-rls">25€</p>
+                </div>
+                <div class="item" onclick="showDetails('Ami Paris Hoodie', 'Minimalistic and chic Ami Paris hoodie.')">
+                    <div class="stock-status">In Stock</div>
+                    <img src="aph.png" alt="Ami Paris Hoodie">
+                    <h3>Ami Paris Hoodie</h3>
+                    <p id="price-aph">25€</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Belts & Accessories Section -->
+        <section class="category">
+            <h2 id="belts-title">Belts & Accessories</h2>
+            <div class="items">
+                <div class="item" onclick="showDetails('LV Belt', 'Luxurious Louis Vuitton belt.')">
+                    <div class="stock-status">In Stock</div>
+                    <img src="lvb.jpg" alt="LV Belt">
+                    <h3>LV Belt</h3>
+                    <p id="price-lvb">25€</p>
+                </div>
+                <div class="item" onclick="showDetails('Burberry Belt', 'Elegant Burberry belt with classic design.')">
+                    <div class="stock-status">In Stock</div>
+                    <img src="bb.jpg" alt="Burberry Belt">
+                    <h3>Burberry Belt</h3>
+                    <p id="price-bb">30€</p>
+                </div>
+                <div class="item" onclick="showDetails('Gucci Cap', 'Stylish and high-end Gucci cap.')">
+                    <div class="stock-status">In Stock</div>
+                    <img src="gc.jpg" alt="Gucci Cap">
+                    <h3>Gucci Cap</h3>
+                    <p id="price-gc">25€</p>
+                </div>
+                <div class="item" onclick="showDetails('Burberry Scarf', 'Warm Burberry scarf for cold weather.')">
+                    <div class="stock-status">In Stock</div>
+                    <img src="bs.jpg" alt="Burberry Schal">
+                    <h3>Burberry Scarf</h3>
+                    <p id="price-bbsc">25€</p>
+                </div>
             </div>
         </section>
     </div>
 
-    <div id="overlay" onclick="hideDetails()"></div>
-
     <div id="itemDetails">
         <h3 id="itemTitle">Item Title</h3>
-        <p id="itemDescription">Item Description</p>
-        <p id="contactInfo">Contact if interested: <a href="https://t.me/+AskA8aGuOIFkZDEy" target="_blank">t.me/+AskA8aGuOIFkZDEy</a></p>
-        <button onclick="hideDetails()">Close</button>
+        <p id="itemDescription">Item description here.</p>
+        <button onclick="closeDetails()">Close</button>
     </div>
 
+    <div id="overlay"></div>
+
     <script>
-        function showDetails(title, description) {
-            document.getElementById('itemTitle').innerText = title;
-            document.getElementById('itemDescription').innerText = description;
-            document.getElementById('itemDetails').style.display = 'block';
-            document.getElementById('overlay').style.display = 'block';
+        function changeLanguage() {
+            const lang = document.getElementById("language").value;
+            if (lang === 'en') {
+                document.getElementById("header-title").textContent = "Reselling Products";
+                document.getElementById("header-note").textContent = "Note: The beanies are inclusive shipping! 1 beanie costs 12$";
+                document.getElementById("language-label").textContent = "Choose Language:";
+                document.getElementById("beanie-title").textContent = "Beanies";
+                document.getElementById("shoes-title").textContent = "Shoes";
+                document.getElementById("hoodie-title").textContent = "Hoodies";
+                document.getElementById("belts-title").textContent = "Belts & Accessories";
+                document.getElementById("note").textContent = "These are some of our best-selling items!";
+            }
+            else if (lang === 'de') {
+                document.getElementById("header-title").textContent = "Wiederverkauf von Produkten";
+                document.getElementById("header-note").textContent = "Hinweis: Die Mützen beinhalten Versand! 1 Mütze kostet 12€";
+                document.getElementById("language-label").textContent = "Sprache wählen:";
+                document.getElementById("beanie-title").textContent = "Mützen";
+                document.getElementById("shoes-title").textContent = "Schuhe";
+                document.getElementById("hoodie-title").textContent = "Hoodies";
+                document.getElementById("belts-title").textContent = "Gürtel & Accessoires";
+                document.getElementById("note").textContent = "Dies sind einige unserer Bestseller!";
+            }
+            else if (lang === 'fr') {
+                document.getElementById("header-title").textContent = "Vente de Produits";
+                document.getElementById("header-note").textContent = "Note : Les bonnets incluent l'expédition ! 1 bonnet coûte 12€";
+                document.getElementById("language-label").textContent = "Choisir la langue:";
+                document.getElementById("beanie-title").textContent = "Bonnets";
+                document.getElementById("shoes-title").textContent = "Chaussures";
+                document.getElementById("hoodie-title").textContent = "Sweatshirts";
+                document.getElementById("belts-title").textContent = "Ceintures & Accessoires";
+                document.getElementById("note").textContent = "Voici quelques-uns de nos best-sellers!";
+            }
+            else if (lang === 'nl') {
+                document.getElementById("header-title").textContent = "Doorverkopen van Producten";
+                document.getElementById("header-note").textContent = "Let op: de mutsen zijn inclusief verzendkosten! 1 muts kost 12€";
+                document.getElementById("language-label").textContent = "Kies taal:";
+                document.getElementById("beanie-title").textContent = "Mutsen";
+                document.getElementById("shoes-title").textContent = "Schoenen";
+                document.getElementById("hoodie-title").textContent = "Hoodies";
+                document.getElementById("belts-title").textContent = "Riemen & Accessoires";
+                document.getElementById("note").textContent = "Dit zijn enkele van onze bestsellers!";
+            }
         }
 
-        function hideDetails() {
-            document.getElementById('itemDetails').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
+        function showDetails(title, description) {
+            document.getElementById("itemTitle").textContent = title;
+            document.getElementById("itemDescription").textContent = description;
+            document.getElementById("itemDetails").style.display = 'block';
+            document.getElementById("overlay").style.display = 'block';
+        }
+
+        function closeDetails() {
+            document.getElementById("itemDetails").style.display = 'none';
+            document.getElementById("overlay").style.display = 'none';
         }
     </script>
 </body>
