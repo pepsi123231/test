@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reselling Products</title>
-     <link rel="icon" href="logo.png" type="image/png">
+    <link rel="icon" href="logo.png" type="image/png">
     <style>
+        /* Existing CSS styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -197,8 +198,9 @@
     </header>
     
     <div class="container">
+        <!-- Beanie Section -->
         <section class="category">
-            <h2 id="category-title">Beanies</h2>
+            <h2>Beanies</h2>
             <div class="items">
                 <div class="item" onclick="showDetails('Ralph Lauren', 'Elegant beanie made from premium wool.')">
                     <div class="stock-status">In Stock</div>
@@ -227,8 +229,9 @@
             </div>
         </section>
 
+        <!-- Shoes Section -->
         <section class="category">
-            <h2 id="shoes-title">Shoes</h2>
+            <h2>Shoes</h2>
             <div class="items">
                 <div class="item" onclick="showDetails('Nike Shox', 'Trendy and comfortable for daily wear.')">
                     <div class="stock-status">In Stock</div>
@@ -272,6 +275,37 @@
                     <img src="dn.png" alt="Dunk x Supreme">
                     <h3>DN x Supreme</h3>
                     <p id="price-dxs">47€</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hoodie Section -->
+        <section class="category">
+            <h2>Hoodies</h2>
+            <div class="items">
+                <div class="item" onclick="showDetails('Sp5der Hoodie', 'Stylish Sp5der hoodie with premium quality fabric.')">
+                    <div class="stock-status">In Stock</div>
+                    <img src="sp5der.png" alt="Sp5der Hoodie">
+                    <h3>Sp5der Hoodie</h3>
+                    <p id="price-sp5der">45€</p>
+                </div>
+                <div class="item" onclick="showDetails('Ralph Lauren Hoodie', 'Comfortable Ralph Lauren hoodie for casual wear.')">
+                    <div class="stock-status">In Stock</div>
+                    <img src="rlh.png" alt="Ralph Lauren Hoodie">
+                    <h3>Ralph Lauren Hoodie</h3>
+                    <p id="price-rlh">25€</p>
+                </div>
+                <div class="item" onclick="showDetails('Stone Island Hoodie', 'Premium Stone Island hoodie with high-quality fabric.')">
+                    <div class="stock-status">In Stock</div>
+                    <img src="sth.png" alt="Stone Island Hoodie">
+                    <h3>Stone Island Hoodie</h3>
+                    <p id="price-sih">25€</p>
+                </div>
+                <div class="item" onclick="showDetails('Kenzo Paris Hoodie', 'Exclusive Kenzo Paris hoodie, stylish and comfortable.')">
+                    <div class="stock-status">In Stock</div>
+                    <img src="kzh.png" alt="Kenzo Paris Hoodie">
+                    <h3>Kenzo Paris Hoodie</h3>
+                    <p id="price-kzh">25€</p>
                 </div>
             </div>
         </section>
