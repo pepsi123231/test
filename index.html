@@ -98,14 +98,31 @@
             font-size: 14px;
             color: #666;
         }
-    .flame {
-        position: absolute;
-        top: -10px;
-        right: -10px;
-        width: 15px; /* Reduced size */
-        height: auto; /* Ensure proportionate height */
-        transform: rotate(-10deg);
-    }
+
+        .stock-status {
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            background-color: #28a745;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .out-of-stock {
+            background-color: #dc3545;
+        }
+
+        .flame {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 15px;
+            height: auto;
+            transform: rotate(-10deg);
+        }
 
         #itemDetails {
             display: none;
@@ -182,22 +199,26 @@
             <h2 id="category-title">Beanies</h2>
             <div class="items">
                 <div class="item" onclick="showDetails('Ralph Lauren', 'Elegant beanie made from premium wool.')">
+                    <div class="stock-status">In Stock</div>
                     <img src="beanierl.png" alt="Ralph Lauren Beanie">
                     <h3>Ralph Lauren</h3>
                     <p id="price-rl">17€</p>
                 </div>
                 <div class="item" onclick="showDetails('Moncler', 'Stylish and warm, perfect for winter.')">
+                    <div class="stock-status out-of-stock">Out of Stock</div>
                     <img src="Monclerb.png" alt="Moncler Beanie">
                     <h3>Moncler</h3>
                     <p id="price-mc">15€</p>
                 </div>
                 <div class="item" onclick="showDetails('Canada Goose', 'Modern design with a snug fit.')">
-                    <img src="cgb.jpg" alt="EA7 Beanie">
+                    <div class="stock-status">In Stock</div>
+                    <img src="cgb.jpg" alt="Canada Goose Beanie">
                     <h3>Canada Goose</h3>
-                    <p id="price-ea7">15€</p>
+                    <p id="price-cg">15€</p>
                 </div>
                 <div class="item" onclick="showDetails('North Face', 'Durable and warm for outdoor adventures.')">
-                    <img src="Northfaceb.png" alt="North Face Beanie">
+                    <div class="stock-status">In Stock</div>
+                    <img src="NorthFaceb.png" alt="North Face Beanie">
                     <h3>North Face</h3>
                     <p id="price-nf">15€</p>
                 </div>
@@ -208,37 +229,44 @@
             <h2 id="shoes-title">Shoes</h2>
             <div class="items">
                 <div class="item" onclick="showDetails('Nike Shox', 'Trendy and comfortable for daily wear.')">
+                    <div class="stock-status">In Stock</div>
                     <img src="shox.png" alt="Nike Shox">
                     <img class="flame" src="flames.png" alt="Hot Sale">
                     <h3>Nike Shox</h3>
                     <p id="price-shox">42€</p>
                 </div>
                 <div class="item" onclick="showDetails('Air Force 1', 'Classic design for every occasion.')">
-                    <img src="Af1.jpg" alt="Air Force 1">
+                    <div class="stock-status">In Stock</div>
+                    <img src="af1.jpg" alt="Air Force 1">
                     <h3>Air Force 1</h3>
                     <p id="price-af1">30€</p>
                 </div>
                 <div class="item" onclick="showDetails('Nike TN', 'Sleek and sporty.')">
+                    <div class="stock-status">In Stock</div>
                     <img src="tns.jpg" alt="Nike TN">
                     <h3>Nike TN</h3>
                     <p id="price-tn">40€</p>
                 </div>
                 <div class="item" onclick="showDetails('Air Max 90', 'Comfortable and stylish.')">
-                    <img src="Max90.png" alt="Air Max 90">
+                    <div class="stock-status">In Stock</div>
+                    <img src="max90.png" alt="Air Max 90">
                     <h3>Air Max 90</h3>
                     <p id="price-am90">40€</p>
                 </div>
                 <div class="item" onclick="showDetails('Jordan 4', 'Iconic design for collectors.')">
-                    <img src="Jordan4.png" alt="Jordan 4">
+                    <div class="stock-status">In Stock</div>
+                    <img src="jordan4.png" alt="Jordan 4">
                     <h3>Jordan 4</h3>
                     <p id="price-j4">40€</p>
                 </div>
                 <div class="item" onclick="showDetails('Uptempo', 'Bold and unique style.')">
-                    <img src="Uptempo.jpg" alt="Uptempo">
+                    <div class="stock-status">In Stock</div>
+                    <img src="uptempo.jpg" alt="Uptempo">
                     <h3>Uptempo</h3>
                     <p id="price-ut">47€</p>
                 </div>
                 <div class="item" onclick="showDetails('Dunk x Supreme', 'Exclusive collaboration for enthusiasts.')">
+                    <div class="stock-status">In Stock</div>
                     <img src="dn.png" alt="Dunk x Supreme">
                     <h3>Dunk x Supreme</h3>
                     <p id="price-dxs">47€</p>
@@ -252,99 +280,11 @@
     <div id="itemDetails">
         <h3 id="itemTitle">Item Title</h3>
         <p id="itemDescription">Item Description</p>
+        <p id="contactInfo">Contact if interested: <a href="https://t.me/+AskA8aGuOIFkZDEy" target="_blank">t.me/+AskA8aGuOIFkZDEy</a></p>
         <button onclick="hideDetails()">Close</button>
     </div>
 
     <script>
-        const translations = {
-            en: {
-                categoryTitle: "Beanies",
-                shoesTitle: "Shoes",
-                prices: {
-                    rl: "17€",
-                    mc: "15€",
-                    ea7: "15€",
-                    nf: "15€",
-                    shox: "42€",
-                    af1: "30€",
-                    tn: "40€",
-                    am90: "40€",
-                    j4: "40€",
-                    ut: "47€",
-                    dxs: "47€",
-                },
-            },
-            de: {
-                categoryTitle: "Mützen",
-                shoesTitle: "Schuhe",
-                prices: {
-                    rl: "17€",
-                    mc: "15€",
-                    ea7: "15€",
-                    nf: "15€",
-                    shox: "42€",
-                    af1: "30€",
-                    tn: "40€",
-                    am90: "40€",
-                    j4: "40€",
-                    ut: "47€",
-                    dxs: "47€",
-                },
-            },
-            fr: {
-                categoryTitle: "Bonnets",
-                shoesTitle: "Chaussures",
-                prices: {
-                    rl: "17€",
-                    mc: "15€",
-                    ea7: "15€",
-                    nf: "15€",
-                    shox: "42€",
-                    af1: "30€",
-                    tn: "40€",
-                    am90: "40€",
-                    j4: "40€",
-                    ut: "47€",
-                    dxs: "47€",
-                },
-            },
-            nl: {
-                categoryTitle: "Mutsen",
-                shoesTitle: "Schoenen",
-                prices: {
-                    rl: "17€",
-                    mc: "15€",
-                    ea7: "15€",
-                    nf: "15€",
-                    shox: "42€",
-                    af1: "30€",
-                    tn: "40€",
-                    am90: "40€",
-                    j4: "40€",
-                    ut: "47€",
-                    dxs: "47€",
-                },
-            },
-        };
-
-        function changeLanguage() {
-            const lang = document.getElementById('language').value;
-            const { categoryTitle, shoesTitle, prices } = translations[lang];
-            document.getElementById('category-title').innerText = categoryTitle;
-            document.getElementById('shoes-title').innerText = shoesTitle;
-            document.getElementById('price-rl').innerText = prices.rl;
-            document.getElementById('price-mc').innerText = prices.mc;
-            document.getElementById('price-ea7').innerText = prices.ea7;
-            document.getElementById('price-nf').innerText = prices.nf;
-            document.getElementById('price-shox').innerText = prices.shox;
-            document.getElementById('price-af1').innerText = prices.af1;
-            document.getElementById('price-tn').innerText = prices.tn;
-            document.getElementById('price-am90').innerText = prices.am90;
-            document.getElementById('price-j4').innerText = prices.j4;
-            document.getElementById('price-ut').innerText = prices.ut;
-            document.getElementById('price-dxs').innerText = prices.dxs;
-        }
-
         function showDetails(title, description) {
             document.getElementById('itemTitle').innerText = title;
             document.getElementById('itemDescription').innerText = description;
