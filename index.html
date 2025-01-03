@@ -5,30 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reselling Products</title>
     <link rel="icon" href="logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* Existing CSS styles */
+        /* Base styles with dark theme */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
+            background-color: #121212; /* Dark background */
+            color: #f5f5f5; /* Light text */
         }
 
         header {
-            background-color: #ffffff;
-            border-bottom: 1px solid #ddd;
+            background-color: #1f1f1f;
+            border-bottom: 1px solid #444;
             padding: 15px;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
         }
 
-        header h1 {
+        header h1, header h3 {
             margin: 0;
-            font-size: 24px;
-            color: #333;
+            font-weight: 600;
         }
 
         nav {
@@ -37,8 +38,10 @@
 
         nav a {
             text-decoration: none;
-            color: #007bff;
+            color: #ffa726; /* Orange highlight for links */
+            font-weight: 600;
             margin: 0 10px;
+            cursor: pointer;
         }
 
         nav a:hover {
@@ -49,18 +52,16 @@
             max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #1e1e1e; /* Slightly lighter than body */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
             border-radius: 10px;
         }
 
-        .category {
-            margin-bottom: 30px;
-        }
-
         .category h2 {
-            font-size: 22px;
+            font-size: 24px;
+            font-weight: 700;
             margin-bottom: 15px;
+            color: #ffa726; /* Bright and vibrant heading */
         }
 
         .items {
@@ -72,7 +73,7 @@
         .item {
             text-align: center;
             padding: 15px;
-            background-color: #f1f1f1;
+            background-color: #292929; /* Darker card background */
             border-radius: 8px;
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
@@ -81,7 +82,7 @@
 
         .item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 10px rgba(255, 167, 38, 0.5); /* Orange shadow */
         }
 
         .item img {
@@ -94,11 +95,12 @@
         .item h3 {
             font-size: 18px;
             margin-bottom: 5px;
+            font-weight: 600;
         }
 
         .item p {
             font-size: 14px;
-            color: #666;
+            color: #bdbdbd; /* Muted text */
         }
 
         .stock-status {
@@ -107,21 +109,22 @@
             left: 50%;
             transform: translateX(-50%);
             font-size: 12px;
-            background-color: #28a745;
+            background-color: #66bb6a; /* Green for in-stock */
             color: white;
             padding: 5px;
             border-radius: 5px;
+            font-weight: 600;
         }
 
         .out-of-stock {
-            background-color: #dc3545;
+            background-color: #ef5350; /* Red for out-of-stock */
         }
 
         .flame {
             position: absolute;
             top: -10px;
             right: -10px;
-            width: 15px;
+            width: 20px;
             height: auto;
             transform: rotate(-10deg);
         }
@@ -132,28 +135,30 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #fff;
+            background-color: #292929;
             padding: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             border-radius: 10px;
             z-index: 2000;
         }
 
         #itemDetails h3 {
             margin-top: 0;
+            font-weight: 600;
         }
 
         #itemDetails button {
-            background-color: #007bff;
+            background-color: #ffa726;
             color: #fff;
             border: none;
             padding: 10px 15px;
             border-radius: 5px;
             cursor: pointer;
+            font-weight: 600;
         }
 
         #itemDetails button:hover {
-            background-color: #0056b3;
+            background-color: #ff8c00;
         }
 
         #overlay {
@@ -163,7 +168,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.7);
             z-index: 1000;
         }
 
@@ -172,15 +177,25 @@
         }
 
         .language-selector select {
-            padding: 5px;
+            padding: 8px;
             font-size: 14px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #292929;
+            color: #fff;
+        }
+
+        .language-selector select:focus {
+            outline: none;
+            border-color: #ffa726;
         }
 
         .note {
             text-align: center;
             margin-top: 30px;
             font-size: 18px;
-            color: #333;
+            font-weight: 600;
+            color: #ffa726;
         }
     </style>
 </head>
@@ -189,9 +204,9 @@
         <h1 id="header-title">Reselling Products</h1>
         <h3 id="header-note">Note: The beanies are inclusive shipping! 1 beanie costs 12$</h3>
         <nav>
-            <a href="#">Home</a>
-            <a href="#">Categories</a>
-            <a href="#">Contact</a>
+            <a href="#" onclick="showCategory('home')">Home</a>
+            <a href="#" onclick="showCategory('categories')">Categories</a>
+            <a href="#" onclick="showContact()">Contact</a>
         </nav>
         <div class="language-selector">
             <label for="language" id="language-label">Choose Language:</label>
@@ -203,12 +218,13 @@
             </select>
         </div>
     </header>
-    
+
     <div class="container">
         <!-- Beanie Section -->
         <section class="category">
             <h2 id="beanie-title">Beanies</h2>
             <div class="items">
+                <!-- Beanie Items -->
                 <div class="item" onclick="showDetails('Ralph Lauren', 'Elegant beanie made from premium wool.')">
                     <div class="stock-status">In Stock</div>
                     <img src="beanierl.png" alt="Ralph Lauren Beanie">
@@ -240,6 +256,7 @@
         <section class="category">
             <h2 id="shoes-title">Shoes</h2>
             <div class="items">
+                <!-- Shoes Items -->
                 <div class="item" onclick="showDetails('Nike Shox', 'Trendy and comfortable for daily wear.')">
                     <div class="stock-status">In Stock</div>
                     <img src="shox.png" alt="Nike Shox">
@@ -273,15 +290,9 @@
                 </div>
                 <div class="item" onclick="showDetails('Uptempo', 'Bold and unique style.')">
                     <div class="stock-status">In Stock</div>
-                    <img src="Uptempo.jpg" alt="Uptempo">
+                    <img src="uptempo.jpg" alt="Uptempo">
                     <h3>Uptempo</h3>
-                    <p id="price-ut">47€</p>
-                </div>
-                <div class="item" onclick="showDetails('DN x Supreme', 'Exclusive collaboration for enthusiasts.')">
-                    <div class="stock-status">In Stock</div>
-                    <img src="dn.png" alt="Dunk x Supreme">
-                    <h3>DN x Supreme</h3>
-                    <p id="price-dxs">47€</p>
+                    <p id="price-up">40€</p>
                 </div>
             </div>
         </section>
@@ -316,11 +327,11 @@
                 </div>
                 <div class="item" onclick="showDetails('Ralph Lauren Cable Knit Sweater', 'Classic Ralph Lauren sweater, cozy and stylish.')">
                     <div class="stock-status">In Stock</div>
-                    <img src="rls.png" alt="Ralph Lauren Cable Knit Sweater">
+                    <img src="rlcable.png" alt="Ralph Lauren Cable Knit Sweater">
                     <h3>Ralph Lauren Cable Knit Sweater</h3>
-                    <p id="price-rls">25€</p>
+                    <p id="price-rlknit">40€</p>
                 </div>
-                <div class="item" onclick="showDetails('Ami Paris Hoodie', 'Minimalistic and chic Ami Paris hoodie.')">
+<div class="item" onclick="showDetails('Ami Paris Hoodie', 'Minimalistic and chic Ami Paris hoodie.')">
                     <div class="stock-status">In Stock</div>
                     <img src="aph.png" alt="Ami Paris Hoodie">
                     <h3>Ami Paris Hoodie</h3>
@@ -328,102 +339,78 @@
                 </div>
             </div>
         </section>
+<!-- Cologne Section -->
+<section class="category">
+    <h2 id="cologne-title">Cologne</h2>
+    <div class="items">
+        <div class="item" onclick="showDetails('Jean Paul Gaultier', 'Classic and elegant fragrance.')">
+            <div class="stock-status">In Stock</div>
+            <img src="jpg.png" alt="Jean Paul Gaultier">
+            <h3>Jean Paul Gaultier</h3>
+            <p id="price-jpg">45€</p>
+        </div>
+        <div class="item" onclick="showDetails('Baccarat Rouge', 'Luxury scent with rich notes.')">
+            <div class="stock-status">In Stock</div>
+            <img src="br.png" alt="Baccarat Rouge">
+            <h3>Baccarat Rouge 70ml</h3>
+            <p id="price-br">27€</p>
+        </div>
+        <div class="item" onclick="showDetails('Dior Sauvage', 'Fresh and powerful fragrance.')">
+            <div class="stock-status">In Stock</div>
+            <img src="ds.png" alt="Dior Sauvage">
+            <h3>Dior Sauvage 100ml</h3>
+            <p id="price-ds">25€</p>
+        </div>
+        <div class="item" onclick="showDetails('Aventus Creed', 'Sleek and sophisticated scent.')">
+            <div class="stock-status">In Stock</div>
+            <img src="ac.png" alt="Aventus Creed">
+            <h3>Aventus Creed 100ml</h3>
+            <p id="price-ac">35€</p>
+        </div>
+    </div>
+</section>
 
-        <!-- Belts & Accessories Section -->
-        <section class="category">
-            <h2 id="belts-title">Belts & Accessories</h2>
-            <div class="items">
-                <div class="item" onclick="showDetails('LV Belt', 'Luxurious Louis Vuitton belt.')">
-                    <div class="stock-status">In Stock</div>
-                    <img src="lvb.jpg" alt="LV Belt">
-                    <h3>LV Belt</h3>
-                    <p id="price-lvb">25€</p>
-                </div>
-                <div class="item" onclick="showDetails('Burberry Belt', 'Elegant Burberry belt with classic design.')">
-                    <div class="stock-status">In Stock</div>
-                    <img src="bb.jpg" alt="Burberry Belt">
-                    <h3>Burberry Belt</h3>
-                    <p id="price-bb">30€</p>
-                </div>
-                <div class="item" onclick="showDetails('Gucci Cap', 'Stylish and high-end Gucci cap.')">
-                    <div class="stock-status">In Stock</div>
-                    <img src="gc.jpg" alt="Gucci Cap">
-                    <h3>Gucci Cap</h3>
-                    <p id="price-gc">25€</p>
-                </div>
-                <div class="item" onclick="showDetails('Burberry Scarf', 'Warm Burberry scarf for cold weather.')">
-                    <div class="stock-status">In Stock</div>
-                    <img src="bs.jpg" alt="Burberry Schal">
-                    <h3>Burberry Scarf</h3>
-                    <p id="price-bbsc">25€</p>
-                </div>
-            </div>
-        </section>
+<!-- Note at the Bottom -->
+<div class="note">
+    <p>For more stuff, <span onclick="showContact()">contact us: t.me/resellingvendorscheap1</span></p>
+</div>
+
     </div>
 
-    <div id="itemDetails">
-        <h3 id="itemTitle">Item Title</h3>
-        <p id="itemDescription">Item description here.</p>
-        <button onclick="closeDetails()">Close</button>
-    </div>
 
-    <div id="overlay"></div>
+    <div id="overlay" onclick="closeDetails()"></div>
+
+
+
+    <div class="note">Please Note: We have way more stuff in stock.</div>
 
     <script>
-        function changeLanguage() {
-            const lang = document.getElementById("language").value;
-            if (lang === 'en') {
-                document.getElementById("header-title").textContent = "Reselling Products";
-                document.getElementById("header-note").textContent = "Note: The beanies are inclusive shipping! 1 beanie costs 12$";
-                document.getElementById("language-label").textContent = "Choose Language:";
-                document.getElementById("beanie-title").textContent = "Beanies";
-                document.getElementById("shoes-title").textContent = "Shoes";
-                document.getElementById("hoodie-title").textContent = "Hoodies";
-                document.getElementById("belts-title").textContent = "Belts & Accessories";
-                document.getElementById("note").textContent = "These are some of our best-selling items!";
-            }
-            else if (lang === 'de') {
-                document.getElementById("header-title").textContent = "Wiederverkauf von Produkten";
-                document.getElementById("header-note").textContent = "Hinweis: Die Mützen beinhalten Versand! 1 Mütze kostet 12€";
-                document.getElementById("language-label").textContent = "Sprache wählen:";
-                document.getElementById("beanie-title").textContent = "Mützen";
-                document.getElementById("shoes-title").textContent = "Schuhe";
-                document.getElementById("hoodie-title").textContent = "Hoodies";
-                document.getElementById("belts-title").textContent = "Gürtel & Accessoires";
-                document.getElementById("note").textContent = "Dies sind einige unserer Bestseller!";
-            }
-            else if (lang === 'fr') {
-                document.getElementById("header-title").textContent = "Vente de Produits";
-                document.getElementById("header-note").textContent = "Note : Les bonnets incluent l'expédition ! 1 bonnet coûte 12€";
-                document.getElementById("language-label").textContent = "Choisir la langue:";
-                document.getElementById("beanie-title").textContent = "Bonnets";
-                document.getElementById("shoes-title").textContent = "Chaussures";
-                document.getElementById("hoodie-title").textContent = "Sweatshirts";
-                document.getElementById("belts-title").textContent = "Ceintures & Accessoires";
-                document.getElementById("note").textContent = "Voici quelques-uns de nos best-sellers!";
-            }
-            else if (lang === 'nl') {
-                document.getElementById("header-title").textContent = "Doorverkopen van Producten";
-                document.getElementById("header-note").textContent = "Let op: de mutsen zijn inclusief verzendkosten! 1 muts kost 12€";
-                document.getElementById("language-label").textContent = "Kies taal:";
-                document.getElementById("beanie-title").textContent = "Mutsen";
-                document.getElementById("shoes-title").textContent = "Schoenen";
-                document.getElementById("hoodie-title").textContent = "Hoodies";
-                document.getElementById("belts-title").textContent = "Riemen & Accessoires";
-                document.getElementById("note").textContent = "Dit zijn enkele van onze bestsellers!";
-            }
-        }
-
+        // Functions to handle item details and language change
         function showDetails(title, description) {
             document.getElementById("itemTitle").textContent = title;
             document.getElementById("itemDescription").textContent = description;
-            document.getElementById("itemDetails").style.display = 'block';
-            document.getElementById("overlay").style.display = 'block';
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("itemDetails").style.display = "block";
         }
 
         function closeDetails() {
-            document.getElementById("itemDetails").style.display = 'none';
-            document.getElementById("overlay").style.display = 'none';
+            document.getElementById("overlay").style.display = "none";
+            document.getElementById("itemDetails").style.display = "none";
+        }
+
+
+
+        function changeLanguage() {
+            var language = document.getElementById("language").value;
+            if (language === 'en') {
+                document.getElementById("header-title").textContent = "Reselling Products";
+                document.getElementById("header-note").textContent = "Note: The beanies are inclusive shipping! 1 beanie costs 12$";
+                document.getElementById("beanie-title").textContent = "Beanies";
+                document.getElementById("shoes-title").textContent = "Shoes";
+                document.getElementById("hoodie-title").textContent = "Hoodies";
+                document.getElementById("language-label").textContent = "Choose Language:";
+            }
+            // More language options can be added here
         }
     </script>
 </body>
