@@ -206,7 +206,9 @@
         <nav>
             <a href="#" onclick="showCategory('home')">Home</a>
             <a href="#" onclick="showCategory('categories')">Categories</a>
-            <a href="#" onclick="showContact()">Contact</a>
+            <a href="https://t.me/resellingvendorscheap1" target="_blank">
+                Contact
+            </a>
         </nav>
         <div class="language-selector">
             <label for="language" id="language-label">Choose Language:</label>
@@ -419,6 +421,10 @@
     <div class="note">Please Note: We have way more stuff in stock.</div>
 
     <script>
+        function showContact() {
+            // You can also perform any other action here if needed
+            console.log("Redirected to telegram...");
+        }
         // Functions to handle item details and language change
         function showDetails(title, description) {
             document.getElementById("itemTitle").textContent = title;
